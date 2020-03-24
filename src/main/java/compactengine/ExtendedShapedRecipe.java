@@ -55,7 +55,7 @@ public class ExtendedShapedRecipe extends ShapedRecipes {
 
         HashMap<Character, ItemStack> hashmap;
 
-        for (hashmap = new HashMap<>(); i < objects.length; i += 2)
+        for (hashmap = new HashMap<Character, ItemStack>(); i < objects.length; i += 2)
         {
             Character character = (Character)objects[i];
             ItemStack itemstack1 = null;

@@ -1,8 +1,8 @@
 package compactengine.block;
 
 
-import buildcraft.core.BlockEngine;
-import buildcraft.core.lib.engines.TileEngineBase;
+import buildcraft.energy.BlockEngine;
+import buildcraft.energy.TileEngine;
 import compactengine.CompactEngine;
 import compactengine.tileentity.*;
 import cpw.mods.fml.relauncher.Side;
@@ -22,6 +22,11 @@ import java.util.List;
 
 public class BlockCompactEngine extends BlockEngine {
     private IIcon woodIcon;
+
+    public BlockCompactEngine(){
+//        setBlockName("CompactEngine:CompactEngineWood");
+//        setBlockTextureName("buildcraft:engineWoodBottom");
+    }
 
     @Override
     public TileEntity createTileEntity(World world, int metadata) {
@@ -66,7 +71,7 @@ public class BlockCompactEngine extends BlockEngine {
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityplayer, int par6, float par7, float par8, float par9) {
-        TileEngineBase tileengine = (TileEngineBase) world.getTileEntity(x, y, z);
+        TileEngine tileengine = (TileEngine) world.getTileEntity(x, y, z);
 //		if (!world.isRemote) {
 //			double heat = tileengine.getCurrentHeatValue();
 //			CompactEngine.addChat("Now Heat:%f℃", heat);
@@ -107,8 +112,4 @@ public class BlockCompactEngine extends BlockEngine {
         return woodIcon;
     }
 
-    @Override
-    public String getTexturePrefix(int meta, boolean addPrefix) {
-        return "buildcraftcore:textures/blocks/engineWood";//"buildcraftcore:textures/blocks/engineWood"
-    }
 }

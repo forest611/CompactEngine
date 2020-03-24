@@ -2,8 +2,8 @@ package compactengine.item;
 
 import buildcraft.api.core.Position;
 
-import buildcraft.core.lib.engines.ItemEngine;
-import buildcraft.core.lib.engines.TileEngineBase;
+import buildcraft.energy.ItemEngine;
+import buildcraft.energy.TileEngine;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -34,10 +34,10 @@ public class ItemCompactEngine extends ItemEngine {
         if (!world.setBlock(x, y, z, blockID, metadata, 3)) {
             return false;
         }
-        if (!(world.getTileEntity(x, y, z) instanceof TileEngineBase)) {
+        if (!(world.getTileEntity(x, y, z) instanceof TileEngine)) {
             return false;
         }
-        TileEngineBase tileengine = (TileEngineBase) world.getTileEntity(x, y, z);
+        TileEngine tileengine = (TileEngine) world.getTileEntity(x, y, z);
         tileengine.orientation = ForgeDirection.getOrientation(ForgeDirection.OPPOSITES[side]);
         ForgeDirection o = ForgeDirection.values()[ForgeDirection.OPPOSITES[side]];
         Position pos = new Position(tileengine.xCoord, tileengine.yCoord, tileengine.zCoord, o);

@@ -61,3 +61,6 @@ processResources
         exclude 'mcmod.info'
     }
 }
+dependencies {
+    compile fileTree(dir: 'lib', include: '*.jar')
+}

@@ -1,10 +1,10 @@
 package compactengine.Client;
 
-import buildcraft.core.lib.engines.RenderEngine;
-import buildcraft.core.lib.engines.TileEngineBase;
 import buildcraft.core.render.RenderingEntityBlocks;
 import buildcraft.core.render.RenderingEntityBlocks.EntityRenderIndex;
 
+import buildcraft.energy.TileEngine;
+import buildcraft.energy.render.RenderEngine;
 import compactengine.CommonProxy;
 import compactengine.CompactEngine;
 import compactengine.tileentity.TileCompactEngine;
@@ -23,7 +23,7 @@ public class ClientProxy extends CommonProxy {
     public void registerTileEntitySpecialRenderer() {
         ClientRegistry.bindTileEntitySpecialRenderer(TileCompactEngine.class, new RenderEngine());
         for (int i = 0;i < 5; i++) {
-            RenderingEntityBlocks.blockByEntityRenders.put(new EntityRenderIndex(CompactEngine.engineBlock, i), new RenderEngine(CompactEngine.RESOURCE_LOCATION_LIST.get(i), chamberResourceLocation, TileEngineBase.TRUNK_BLUE_TEXTURE));
+            RenderingEntityBlocks.blockByEntityRenders.put(new EntityRenderIndex(CompactEngine.engineBlock, i), new RenderEngine(CompactEngine.RESOURCE_LOCATION_LIST.get(i), chamberResourceLocation, TileEngine.TRUNK_BLUE_TEXTURE));
         }
 //        RenderingEntityBlocks.blockByEntityRenders.put(new EntityRenderIndex(CompactEngine.engineBlock, 1), new RenderEngine(TileCompactEngine.Compact2_BASE_TEXTURE, chamberResourceLocation, TileEngineBase.TRUNK_BLUE_TEXTURE));
 //        RenderingEntityBlocks.blockByEntityRenders.put(new EntityRenderIndex(CompactEngine.engineBlock, 2), new RenderEngine(TileCompactEngine.Compact3_BASE_TEXTURE, chamberResourceLocation, TileEngineBase.TRUNK_BLUE_TEXTURE));

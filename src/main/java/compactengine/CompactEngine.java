@@ -1,6 +1,7 @@
 package compactengine;
 
 import buildcraft.BuildCraftCore;
+import buildcraft.BuildCraftEnergy;
 import buildcraft.BuildCraftSilicon;
 import buildcraft.transport.gates.GateDefinition;
 import buildcraft.transport.gates.ItemGate;
@@ -42,7 +43,7 @@ public class CompactEngine {
             "base_wood3",
             "base_wood4",
             "base_wood5");
-    public static final List<ResourceLocation> RESOURCE_LOCATION_LIST = new ArrayList<>();
+    public static final List<ResourceLocation> RESOURCE_LOCATION_LIST = new ArrayList<ResourceLocation>();
 
     @SidedProxy(clientSide = "compactengine.Client.ClientProxy", serverSide = "compactengine.CommonProxy")
     public static CommonProxy proxy;
@@ -80,22 +81,13 @@ public class CompactEngine {
         neverExplosion = config.get(Configuration.CATEGORY_GENERAL, "neverExplosion", false, "Engine No Explosion").getBoolean(false);
 //		OilFlowingSpeed = config.get(Configuration.CATEGORY_GENERAL, "OilFlowingSpeed", 20, "Change OilFlowingSpeed. Default:20tick").getInt();
         config.save();
-        engineBlock = new BlockCompactEngine().setResistance(10.0f).setBlockName("CompactEngine:CompactEngineWood").setBlockTextureName("buildcraft:engineWoodBottom");
-        GameRegistry.registerBlock(engineBlock, ItemCompactEngine.class, "compactengineblock");
-//		engineItem  = new ItemCompactEngine(engineBlock);
-//		GameRegistry.registerItem(engineItem, "compactengineitem");
-//		energyChecker = new ItemEnergyChecker().setUnlocalizedName("compactengine:energyChecker").setTextureName("compactengine:energyChecker");
-//		GameRegistry.registerItem(energyChecker, "energychecker");
+        engineBlock = new BlockCompactEngine();
+        GameRegistry.registerBlock(engineBlock,ItemCompactEngine.class, "compactengineblock");
     }
 
     @Mod.EventHandler
     public void load(FMLInitializationEvent event) {
-//		Block.blocksList[BuildCraftEnergy.fluidOil.getBlockID()] = null;
-//		oilMoving = (new BlockOilFlowing2(BuildCraftEnergy.fluidOil.getBlockID(), Material.water));
-//		buildcraftFluidOil = new Fluid("oil");
-//		ObfuscationReflectionHelper.setPrivateValue(BuildCraftEnergy.class, BuildCraftEnergy.instance, buildcraftFluidOil, 6);
-//		BuildCraftEnergy.fluidOil = FluidRegistry.getFluid("oil");
-//		BuildCraftEnergy.fluidOil.setBlockID(BuildCraftEnergy.blockOil);
+
         engine1 = new ItemStack(engineBlock, 1, 0);
         engine2 = new ItemStack(engineBlock, 1, 1);
         engine3 = new ItemStack(engineBlock, 1, 2);
@@ -109,8 +101,8 @@ public class CompactEngine {
         GameRegistry.registerTileEntity(TileCompactEngine512.class, "tile.compactengine512");
         GameRegistry.registerTileEntity(TileCompactEngine2048.class, "tile.compactengine2048");
 
-        ItemStack woodEngine = new ItemStack(BuildCraftCore.engineBlock, 1, 0);
-        ItemStack ironEngine = new ItemStack(BuildCraftCore.engineBlock, 1, 2);
+        ItemStack woodEngine = new ItemStack(BuildCraftEnergy.engineBlock, 1, 0);
+        ItemStack ironEngine = new ItemStack(BuildCraftEnergy.engineBlock, 1, 2);
         ItemStack ironGear = new ItemStack(BuildCraftCore.ironGearItem);
         ItemStack diaGear = new ItemStack(BuildCraftCore.diamondGearItem);
         ItemStack diaChip = new ItemStack(BuildCraftSilicon.redstoneChipset, 1, 3);
@@ -122,7 +114,6 @@ public class CompactEngine {
         GameRegistry.addRecipe(engine3, "geg", "eie", "geg", 'e', engine2, 'g', diaChip, 'i', ironEngine);
 
         if (isAddCompactEngine512and2048) {
-//			GameRegistry.addRecipe(engine4, "geg", "eie", "geg", 'e', engine3, 'g', goldORGate, 'i', ironEngine);
             GameRegistry.addRecipe(new ExtendedShapedRecipe(engine4, "geg", "eie", "geg", 'e', engine3, 'g', goldORGate, 'i', ironEngine));
 			GameRegistry.addRecipe(new ExtendedShapedRecipe(engine5, "geg", "eie", "geg", 'e', engine4, 'g', diaORGate, 'i', ironEngine));
         }

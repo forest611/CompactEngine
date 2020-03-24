@@ -10,12 +10,12 @@
   "authorList": [
     "takanasayo"
   ],
-  "credits": "Updated to mc172 By A.K.",
+  "credits": "Updated to mc172 By A.K.,Update forest611 (Unofficially)",
   "logoFile": "",
   "screenshots": [
   ],
   "parent":"BuildCraft|Energy",
-  "dependencies": ["mod_MinecraftForge"
+  "dependencies": ["mod_MinecraftForge","BuildCraft|Core","BuildCraft|Energy"
   ]
 }
 ]
